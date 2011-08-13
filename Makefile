@@ -17,7 +17,7 @@
 #############################################################################
 
 PROJECT=main
-SOURCES=main.c led.c usart.c
+SOURCES=main.c led.c usart.c adc.c
 MMCU=atmega328
 CC=avr-gcc
 
