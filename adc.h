@@ -37,6 +37,6 @@
 
 void adc_init ( void );
 unsigned char adc_ready ( void );
-unsigned int adc_get_value ( void );
+unsigned int adc_get_value ( unsigned char ch );
 
 /****************************** End Of Module *******************************/

@@ -30,12 +30,14 @@
 
 /***************************** Include files *******************************/
 
-#include <avr/io.h>
+#include "avr/io.h"
+#include "stdlib.h"
 #include "misc.h"
 #include "led.h"
 #include "usart.h"
 #include "util/delay.h"
 #include "avr/pgmspace.h"
+#include "adc.h"
 
 /*****************************   Constants   *******************************/
 
@@ -47,15 +49,20 @@ int main(void)
 {
 	led_init();
 	usart_init();
-
+	adc_init();
+	
 	unsigned char c = 0;
+	char data[4];
 	
 	for (;;) /* go into an endless loop */
 	{
-		led_blink( (unsigned int)100);
+		led_blink( (unsigned int)1);
 		
 		usart_tx_string_P(PSTR("Number: "));
-		usart_tx((c + 0x30));
+		itoa(adc_get_value(1), data, 10);
+		usart_tx_string(data);
+		
+		//usart_tx((c + 0x30));
 		usart_send_newline();
 		
 		if(c >= 9)
