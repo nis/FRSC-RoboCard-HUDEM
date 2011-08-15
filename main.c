@@ -58,8 +58,8 @@ int main(void)
 	{
 		led_blink( (unsigned int)1);
 		
-		usart_tx_string_P(PSTR("Number: "));
-		itoa(adc_get_value(1), data, 10);
+		usart_tx_string_P(PSTR("$RCMD,"));
+		itoa(adc_get_value(2), data, 10);
 		usart_tx_string(data);
 		
 		//usart_tx((c + 0x30));
@@ -71,7 +71,7 @@ int main(void)
 		} else {
 			c++;
 		}
-		_delay_ms(1000);
+		_delay_ms(100);
 	}
 	return 0; /* just for the principle as we never get here */
 }
